@@ -3,3 +3,9 @@
 Un site internet présentant des peintures
 
 ## Features
+
+## Lancer l'environnement de développement
+``` bash
+composer install
+symfony serve
+```
