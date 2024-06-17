@@ -9,3 +9,12 @@ Un site internet présentant des peintures
 composer install
 symfony serve
 ```
+## Créer des tests
+``` bash
+symfony console make:unit-test <nom-du-test>
+```
+
+## Lancer des tests
+``` bash
+php bin/phpunit --testdox
+```
