@@ -7,6 +7,8 @@ Un site internet présentant des peintures
 ## Lancer l'environnement de développement
 ``` bash
 composer install
+npm install
+npm run build
 symfony serve
 ```
 
