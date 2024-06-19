@@ -27,3 +27,14 @@ php bin/phpunit --testdox
 composer require symfony/webpack-encore-bundle
 npm install
 ```
+
+## Mise en places des fixtures avec FakerPHP
+``` bash
+composer require --dev orm-fixtures
+composer require fakerphp/faker
+```
+
+## Charger les fixtures
+``` bash
+symfony console doctrine:fixtures:load
+```
