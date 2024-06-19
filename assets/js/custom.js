@@ -1,3 +1,8 @@
+import AOS from 'aos';
+import Rellax from 'rellax';
+import { tns } from 'tiny-slider/src/tiny-slider';
+import GLightbox from 'glightbox';
+
 (function () {
     'use strict';
 
@@ -17,6 +22,8 @@
         const overlay = document.getElementById('overlayer');
 
         function fadeOut(el) {
+            if (!el) return;  // Vérifie si l'élément existe avant de tenter de modifier son style
+
             el.style.opacity = 1;
             (function fade() {
                 if ((el.style.opacity -= .1) < 0) {
@@ -27,10 +34,12 @@
             })();
         }
 
-        setTimeout(() => {
-            fadeOut(loader);
-            fadeOut(overlay);
-        }, 200);
+        if (loader && overlay) {
+            setTimeout(() => {
+                fadeOut(loader);
+                fadeOut(overlay);
+            }, 200);
+        }
     };
     preloader();
 
@@ -45,8 +54,11 @@
                 let diff = finaleDate - now;
 
                 if (diff < 0) {
-                    document.querySelector('.custom-alert').style.display = 'block';
-                    document.querySelector('.counter-wrap').style.display = 'none';
+                    const customAlert = document.querySelector('.custom-alert');
+                    const counterWrap = document.querySelector('.counter-wrap');
+
+                    if (customAlert) customAlert.style.display = 'block';
+                    if (counterWrap) counterWrap.style.display = 'none';
                     return; // Stop the function if the countdown is over
                 }
 

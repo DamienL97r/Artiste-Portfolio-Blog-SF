@@ -24,6 +24,9 @@
         "aos": "^2.3.4",
         "autoprefixer": "^10.4.19",
         "bootstrap": "^5.2.3",
-        "postcss-loader": "^7.3.4"
+        "glightbox": "^3.3.0",
+        "postcss-loader": "^7.3.4",
+        "rellax": "^1.12.1",
+        "tiny-slider": "^2.9.4"
     }
 }
