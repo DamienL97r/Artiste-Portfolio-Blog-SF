@@ -7,27 +7,16 @@
       </div>
     </div>
     <div class="row">
+
+      {% for article in last_three_blog_post %}
       <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
         <a href="#"><img src="images/img_v_3-min.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
-        <h3 class="h4 mb-3"><a href="#">Titre de l'actualité</a></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum consequuntur, iure quidem officiis adipisci</p>
-        <p class="blog-post-meta">Publié le 00/00/0000</p>
+        <h3 class="h4 mb-3"><a href="#">{{article.title}}</a></h3>
+        <p>{{article.content|u.truncate(150, '...', false)}}</p>
+        <p class="blog-post-meta">Publié le {{article.createdAt|date("d-m-Y")}}</p>
         <p class="mb-0"><a href="#" class="more">Voir plus</a></p>
       </div>
-      <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-        <a href="#"><img src="images/img_v_4-min.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
-        <h3 class="h4 mb-3"><a href="#">Titre de l'actualité</a></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum consequuntur, iure quidem officiis adipisci</p>
-        <p class="blog-post-meta">Publié le 00/00/0000</p>
-        <p class="mb-0"><a href="#" class="more">Voir plus</a></p>
-      </div>
-      <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-        <a href="#"><img src="images/img_v_6-min.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
-        <h3 class="h4 mb-3"><a href="#">Titre de l'actualité</a></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum consequuntur, iure quidem officiis adipisci</p>
-        <p class="blog-post-meta">Publié le 00/00/0000</p>
-        <p class="mb-0"><a href="#" class="more">Voir plus</a></p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
