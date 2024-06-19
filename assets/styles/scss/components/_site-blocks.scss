@@ -94,6 +94,14 @@ a {
 	letter-spacing: .1rem;
 	font-weight: 700;
 }
+.blog-post-meta {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: .06rem;
+	font-weight: 800;
+	font-family: $font-family-sans-serif;
+	color: rgb(172, 172, 172);
+}
 .v-h-full {
 	height: 100vh;
 	min-height: 700px;
@@ -916,7 +924,7 @@ a {
 			bottom: 0px;
 			transition-delay: 0.09s;
   		// animation-direction: alternate;
-  	}
+  		}
   	img {
   		transform: scale(1.05);
   	}
