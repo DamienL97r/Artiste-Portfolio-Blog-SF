@@ -40,8 +40,14 @@
             <div class="col-lg-6 pe-lg-5" data-aos="fade-up">
                 <span class="subheading d-inline-block mb-2">{{ paint.name }}</span>
                 <h2 class="mb-4">{{ paint.name }}</h2>
+                <p class="mb-5">Réalisé le {{ paint.realisationDate|date("d/m/Y") }}</p>
                 <p class="mb-5">{{ paint.description }}</p>
-                <p><a href="#" class="btn btn-black">Get started</a></p>
+                <p class="mb-5">Largeur : {{ paint.width }} cm</p>
+                <p class="mb-5">Hauteur : {{ paint.height }} cm</p>
+                {% if paint.onSale %}
+                    <p class="mb-5">Disponible à la vente ! Prix : {{ paint.price|format_currency('EUR', locale='fr') }}</p>
+                    <p><a href="{{ path('app_contact')}}" class="btn btn-black">Contactez moi</a></p>
+                {% endif %}
             </div>
         </div>
         <p class="mb-0"><a href="{{ path('app_realization')}}" class="more">Voir toutes les oeuvres</a></p>
