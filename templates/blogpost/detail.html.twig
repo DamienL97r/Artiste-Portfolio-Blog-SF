@@ -38,11 +38,9 @@
                 </div>
             </div>
             <div class="col-lg-6 pe-lg-5" data-aos="fade-up">
-                <span class="subheading d-inline-block mb-2">{{ article.slug }}</span>
                 <h2 class="mb-4">{{ article.title }}</h2>
+                <span class="subheading d-inline-block mb-2">Publié le {{ article.createdAt|date("d/m/Y") }}</span>
                 <p class="mb-5">{{ article.content }}</p>
-                <p class="mb-5">Publié le {{ article.createdAt|date("d/m/Y") }}</p>
-                <p><a href="#" class="btn btn-black">Get started</a></p>
             </div>
         </div>
         <p class="mb-0"><a href="{{ path('app_blogpost')}}" class="more">Retour à la liste</a></p>
