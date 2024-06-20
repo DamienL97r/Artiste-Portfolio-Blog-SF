@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ paint.name }}{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block body %}
 <div class="hero v-h-full overlay">
@@ -11,8 +11,8 @@
         <div class="row align-items-center v-h-full">
 
             <div class="col-lg-7 col-xxl-6 mx-auto text-center">
-                <h1 class="heading-2 text-white mb-3" data-aos="fade-up">{{ paint.name }}</h1>
-                <p data-aos="fade-up" data-aos-delay="200" class="text-white lead mb-4">{{ paint.description }}</p>
+                <h1 class="heading-2 text-white mb-3" data-aos="fade-up">{{ article.title }}</h1>
+                <p data-aos="fade-up" data-aos-delay="200" class="text-white lead mb-4">{{ article.content }}</p>
                 <p data-aos="fade-up" data-aos-delay="300"><a href="#" class="btn btn-primary-outline white me-4">Get in Touch</a></p>
             </div>
 
@@ -30,27 +30,22 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-6 col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <a href="{{paint.file}}" class="media-1 glightbox">
-                            <img src="{{paint.file}}" alt="Image" class="img-fluid">
+                        <a href="../images/hero-2-min.jpg" class="media-1 glightbox">
+                            <img src="../images/hero-2-min.jpg" alt="Image" class="img-fluid">
                         </a>
                     </div>
                     
                 </div>
             </div>
             <div class="col-lg-6 pe-lg-5" data-aos="fade-up">
-                <span class="subheading d-inline-block mb-2">{{ paint.name }}</span>
-                <h2 class="mb-4">{{ paint.name }}</h2>
-                <p class="mb-5">{{ paint.description }}</p>
+                <span class="subheading d-inline-block mb-2">{{ article.slug }}</span>
+                <h2 class="mb-4">{{ article.title }}</h2>
+                <p class="mb-5">{{ article.content }}</p>
+                <p class="mb-5">Publié le {{ article.createdAt|date("d/m/Y") }}</p>
                 <p><a href="#" class="btn btn-black">Get started</a></p>
             </div>
         </div>
-        <p class="mb-0"><a href="{{ path('app_realization')}}" class="more">Voir toutes les oeuvres</a></p>
-
-        {% if paint.portfolio %}
-            {% for category in paint.category %}
-                <p class="mb-0"><a href="{{ path('app_portfolio_category', {'id': category.id}) }}" class="more">Voir la catégorie</a></p>
-            {% endfor %}
-        {% endif %}
+        <p class="mb-0"><a href="{{ path('app_blogpost')}}" class="more">Retour à la liste</a></p>
     </div>
 </div>
 
