@@ -17,10 +17,11 @@
           <li><a href="{{ path('app_realization')}}">Réalisations</a></li>
           <li><a href="{{ path('app_blogpost')}}">Actualités</a></li>
           <li class="has-children">
-						<a href="#">Portfolio</a>
+						<a href="{{ path('app_portfolio')}}">Portfolio</a>
 						<ul class="dropdown">
-							<li><a href="#">Category 1</a></li>
-							<li><a href="#">Category 2</a></li>
+              {% for category in categoryNavbar() %}
+              <li><a href="{{ path('app_portfolio_category', {'id': category.id}) }}">{{ category.name }}</a></li>
+              {% endfor %}
 						</ul>
 					</li>
           <li><a href="{{ path('app_about')}}">A propos</a></li>
