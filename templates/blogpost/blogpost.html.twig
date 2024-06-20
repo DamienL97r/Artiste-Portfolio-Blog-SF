@@ -16,10 +16,8 @@
                 <p data-aos="fade-up" data-aos-delay="200" class="text-white lead mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
                 <p data-aos="fade-up" data-aos-delay="300"><a href="{{ path('app_contact')}}" class="btn btn-primary-outline white me-4">Contactez moi</a></p>
             </div>
-
         </div>
     </div>
-
 </div>
 
 <div class="section mb-5">
@@ -34,11 +32,11 @@
   
         {% for article in articles %}
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="#"><img src="images/img_v_3-min.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
-          <h3 class="h4 mb-3"><a href="#">{{article.title}}</a></h3>
+          <a href="{{ path('app_blogpost_detail', {'id': article.id}) }}"><img src="images/img_v_3-min.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
+          <h3 class="h4 mb-3"><a href="{{ path('app_blogpost_detail', {'id': article.id}) }}">{{article.title}}</a></h3>
           <p>{{article.content|u.truncate(150, '...', false)}}</p>
           <p class="blog-post-meta">Publié le {{article.createdAt|date("d-m-Y")}}</p>
-          <p class="mb-0"><a href="#" class="more">Voir plus</a></p>
+          <p class="mb-0"><a href="{{ path('app_blogpost_detail', {'id': article.id}) }}" class="more">Voir plus</a></p>
         </div>
         {% endfor %}
       </div>
