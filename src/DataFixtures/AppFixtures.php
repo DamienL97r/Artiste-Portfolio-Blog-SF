@@ -12,9 +12,9 @@ use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
-    private const NB_PAINT = 2;
+    private const NB_PAINT = 6;
     private const NB_BLOGPOST = 5;
-    private const NB_CATEGORY = 5;
+    private const NB_CATEGORY = 2;
     private const BATCH_SIZE = 20;
 
     public function load(ObjectManager $manager): void
