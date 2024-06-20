@@ -28,7 +28,7 @@
 
         {% for paint in paints %}
           <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <a href="#" class="media-1">
+            <a href="{{ path('app_realization_detail', {'id': paint.id}) }}" class="media-1">
               <img src="{{paint.file}}" alt="Image" class="img-fluid">
               <div class="media-1-content">
                 <h2>{{paint.name}}</h2>
