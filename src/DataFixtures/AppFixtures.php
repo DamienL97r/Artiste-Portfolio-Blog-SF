@@ -21,14 +21,27 @@ class AppFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
         
-        $userAdmin = new User();
-        $userAdmin->setEmail('user@test.com')
+        $userPainter = new User();
+        $userPainter->setEmail('user@painter.com')
             ->setFirstname($faker->firstName())
             ->setLastname($faker->lastName())
             ->setPhoneNumber($faker->phoneNumber())
             ->setAbout($faker->text(150))
             ->setInstagramAccount('instagram')
-            ->setPassword('$2y$13$.4rPn3ImMuOTa4ia38ULs.QAjWserG9D369rGvJdm893ofKS0bnhO'); // mdp = userAdmin
+            ->setRoles(['ROLE_PAINTER'])
+            ->setPassword('$2y$13$.4rPn3ImMuOTa4ia38ULs.QAjWserG9D369rGvJdm893ofKS0bnhO'); // mdp = user
+
+        $manager->persist($userPainter);
+
+        $userAdmin = new User();
+        $userAdmin->setEmail('user@admin.com')
+            ->setFirstname($faker->firstName())
+            ->setLastname($faker->lastName())
+            ->setPhoneNumber($faker->phoneNumber())
+            ->setAbout($faker->text(150))
+            ->setInstagramAccount('instagram')
+            ->setRoles(['ROLE_ADMIN'])
+            ->setPassword('$2y$13$.4rPn3ImMuOTa4ia38ULs.QAjWserG9D369rGvJdm893ofKS0bnhO'); // mdp = user
 
         $manager->persist($userAdmin);
         $manager->flush(); // Persist and flush userAdmin to avoid multiple persistent states
@@ -58,7 +71,7 @@ class AppFixtures extends Fixture
                       ->setSlug($faker->slug)
                       ->setFile('/images/hero_1.jpg')
                       ->addCategory($category)
-                      ->setUser($userAdmin);
+                      ->setUser($userPainter);
 
                 $manager->persist($paint);
                 $batchCount++;
@@ -76,7 +89,7 @@ class AppFixtures extends Fixture
                      ->setContent($faker->realTextBetween(10, 50))
                      ->setSlug($faker->slug)
                      ->setCreatedAt($faker->dateTimeBetween('-6 month', 'now'))
-                     ->setUser($userAdmin);
+                     ->setUser($userPainter);
 
             $manager->persist($blogPost);
             $batchCount++;
