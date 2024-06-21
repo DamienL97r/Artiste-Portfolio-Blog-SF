@@ -38,3 +38,8 @@ composer require fakerphp/faker
 ``` bash
 symfony console doctrine:fixtures:load
 ```
+
+## Recevoir les mail sur mailtrap
+``` bash
+php bin/console messenger:consume async --env=dev
+```
