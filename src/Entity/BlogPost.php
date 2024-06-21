@@ -38,6 +38,9 @@ class BlogPost
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'blogPost')]
     private Collection $comments;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $file = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -134,6 +137,18 @@ class BlogPost
                 $comment->setBlogPost(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    public function setFile(?string $file): static
+    {
+        $this->file = $file;
 
         return $this;
     }
