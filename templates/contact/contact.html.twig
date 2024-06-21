@@ -26,34 +26,45 @@
 
 <div class="section section-contact m-md-5 px-md-5">
     <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert-success">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
         <h2>Any question? Fill the contact form</h2>
         <p class="mb-4">Send us a message</p>
 
-        <form action="" class="form-contact">
+        {{ form_start(form, {'attr': {'class': 'form-contact'}}) }}
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Nom complet">
+                        {{ form_row(form.completeName, {'attr': {'class': 'form-control', 'placeholder': 'Nom complet'}}) }}
                     </div>	
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="email">
+                        {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-12">
                 <div class="form-group">
-                    <textarea rows="10" cols="10" class="form-control" placeholder="Votre message"></textarea>
+                    {{ form_row(form.subject, {'attr': {'class': 'form-control', 'placeholder': 'Objet'}}) }}
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="form-group">
+                    {{ form_row(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Votre message'}}) }}
                 </div>
             </div>
 
             <div class="col-lg-6">
-                <input type="submit" class="btn btn-black" value="Send message">
+                {{ form_widget(form.envoyer, { 'attr': {'class': 'btn btn-black'} }) }}
             </div>
 
-        </form>
+        {{ form_end(form) }}
     </div>	
 </div>
 
