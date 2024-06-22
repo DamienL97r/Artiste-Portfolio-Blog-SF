@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\BlogPost;
+use App\Entity\Paint;
 use DateTime;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityDeletedEvent;
@@ -27,11 +28,18 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            BeforeEntityPersistedEvent::class => ['setBlogPostSlugAndDateAndUser'],
-            BeforeEntityDeletedEvent::class => ['removeBlogPostImage']
+            BeforeEntityPersistedEvent::class => [
+                ['setBlogPostSlugAndDateAndUser', 10],
+                ['setPaintSlugAndDateAndUser', 10],
+            ],
+            BeforeEntityDeletedEvent::class => [
+                ['removeBlogPostImage', 10],
+                ['removePaintImage', 10],
+            ],
         ];
     }
 
+    // BLOGPOST
     public function setBlogPostSlugAndDateAndUser(BeforeEntityPersistedEvent $event)
     {
         $entity = $event->getEntityInstance();
@@ -40,31 +48,76 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $slug = $this->slugger->slug($entity->getTitle());
+        $slug = $this->slugger->slug($entity->getTitle())->lower();
         $entity->setSlug($slug);
 
-        $now = new DateTime('now');
-        $entity->setCreatedAt($now);
+        if ($entity->getCreatedAt() === null) {
+            $now = new DateTime('now');
+            $entity->setCreatedAt($now);
+        }
 
-        $user = $this->security->getUser();
-        $entity->setUser($user);
+        if ($entity->getUser() === null) {
+            $user = $this->security->getUser();
+            $entity->setUser($user);
+        }
     }
 
     public function removeBlogPostImage(BeforeEntityDeletedEvent $event)
-{
-    $entity = $event->getEntityInstance();
+    {
+        $entity = $event->getEntityInstance();
 
-    if (!($entity instanceof BlogPost)) {
-        return;
-    }
+        if (!($entity instanceof BlogPost)) {
+            return;
+        }
 
-    $imageFilename = $entity->getFile();
-    if ($imageFilename) {
-        $imagePath = __DIR__ . '/../../public/uploads/images/' . $imageFilename;
+        $imageFilename = $entity->getFile();
+        if ($imageFilename) {
+            $imagePath = __DIR__ . '/../../public/uploads/images/blogposts/' . $imageFilename;
 
-        if (file_exists($imagePath)) {
-            $this->filesystem->remove($imagePath);
+            if (file_exists($imagePath)) {
+                $this->filesystem->remove($imagePath);
+            }
         }
     }
-}
+
+    // PAINT
+    public function setPaintSlugAndDateAndUser(BeforeEntityPersistedEvent $event)
+    {
+        $entity = $event->getEntityInstance();
+
+        if (!($entity instanceof Paint)) {
+            return;
+        }
+
+        $slug = $this->slugger->slug($entity->getName())->lower();
+        $entity->setSlug($slug);
+
+        if ($entity->getCreatedAt() === null) {
+            $now = new DateTime('now');
+            $entity->setCreatedAt($now);
+        }
+
+        if ($entity->getUser() === null) {
+            $user = $this->security->getUser();
+            $entity->setUser($user);
+        }
+    }
+
+    public function removePaintImage(BeforeEntityDeletedEvent $event)
+    {
+        $entity = $event->getEntityInstance();
+
+        if (!($entity instanceof Paint)) {
+            return;
+        }
+
+        $imageFilename = $entity->getFile();
+        if ($imageFilename) {
+            $imagePath = __DIR__ . '/../../public/uploads/images/paints/' . $imageFilename;
+
+            if (file_exists($imagePath)) {
+                $this->filesystem->remove($imagePath);
+            }
+        }
+    }
 }

@@ -29,17 +29,19 @@
                 <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="0">
                     <div class="service grayscale">
                         <div class="service-img">
-                            <a href="{{ path('app_portfolio_category', {'id': category.id}) }}"><img src="{{ img.file }}" alt="Image" class="img-fluid"></a>
+                            <a href="{{ path('app_portfolio_category', {'id': category.id}) }}">
+                                <img src="../uploads/images/paints/{{ img.file }}" alt="Image" class="img-fluid">
+                            </a>
                         </div>
                         <div class="service-inner">
                             <span></span>
                             <h3>{{ category.name }}</h3>
                             <p>{{ category.description }}</p>
-                            <p class="mb-0"><a href="{{ path('app_portfolio_category', {'id': category.id}) }}" class="more">Voir plus</a></p>
                         </div>
                     </div>
                 </div>
             {% endfor %}
+
         </div>
     </div>
 </div>
