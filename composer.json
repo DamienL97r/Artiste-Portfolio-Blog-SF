@@ -80,6 +80,7 @@
         "symfony/polyfill-php82": "*"
     },
     "scripts": {
+        "phpcs": "php-cs-fixer fix src --verbose --rules=@Symfony",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
