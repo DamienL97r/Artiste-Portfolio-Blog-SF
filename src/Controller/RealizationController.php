@@ -17,16 +17,16 @@ class RealizationController extends AbstractController
         PaintRepository $paintRepository,
         PaginatorInterface $paginator,
         Request $request
-        ): Response {
-            $data = $paintRepository->findBy([], ['id' => 'DESC']);
+    ): Response {
+        $data = $paintRepository->findBy([], ['id' => 'DESC']);
 
-            $paints = $paginator->paginate(
-                $data, 
-                $request->query->getInt('page', 1),
-                6
-            );
+        $paints = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            6
+        );
 
-            return $this->render('realization/realization.html.twig', [
+        return $this->render('realization/realization.html.twig', [
             'paints' => $paints,
         ]);
     }

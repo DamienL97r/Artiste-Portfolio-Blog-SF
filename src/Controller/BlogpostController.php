@@ -17,12 +17,11 @@ class BlogpostController extends AbstractController
         BlogPostRepository $blogPostRepository,
         PaginatorInterface $paginator,
         Request $request
-        ): Response
-    {
+    ): Response {
         $data = $blogPostRepository->findBy([], ['id' => 'DESC']);
 
         $articles = $paginator->paginate(
-            $data, 
+            $data,
             $request->query->getInt('page', 1),
             6
         );

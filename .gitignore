@@ -34,3 +34,7 @@ yarn-error.log
 /public/uploads/images/blogposts/*
 !/public/uploads/images/paints/placeholder.jpg
 !/public/uploads/images/blogposts/placeholder.jpg
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###

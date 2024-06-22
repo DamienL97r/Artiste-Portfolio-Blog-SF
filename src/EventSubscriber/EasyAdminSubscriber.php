@@ -4,11 +4,9 @@ namespace App\EventSubscriber;
 
 use App\Entity\BlogPost;
 use App\Entity\Paint;
-use DateTime;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Filesystem\Filesystem;
 
 class EasyAdminSubscriber implements EventSubscriberInterface
 {
@@ -38,12 +36,12 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if ($entity->getCreatedAt() === null) {
-            $now = new DateTime('now');
+        if (null === $entity->getCreatedAt()) {
+            $now = new \DateTime('now');
             $entity->setCreatedAt($now);
         }
 
-        if ($entity->getUser() === null) {
+        if (null === $entity->getUser()) {
             $user = $this->security->getUser();
             $entity->setUser($user);
         }
@@ -58,12 +56,12 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if ($entity->getCreatedAt() === null) {
-            $now = new DateTime('now');
+        if (null === $entity->getCreatedAt()) {
+            $now = new \DateTime('now');
             $entity->setCreatedAt($now);
         }
 
-        if ($entity->getUser() === null) {
+        if (null === $entity->getUser()) {
             $user = $this->security->getUser();
             $entity->setUser($user);
         }

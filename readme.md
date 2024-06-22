@@ -43,3 +43,8 @@ symfony console doctrine:fixtures:load
 ``` bash
 php bin/console messenger:consume async --env=dev
 ```
+
+## Lancer php-cs-fixer
+``` bash
+php-cs-fixer fix src --verbose --rules=@Symfony
+```

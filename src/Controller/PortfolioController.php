@@ -12,18 +12,16 @@ use Symfony\Component\Routing\Attribute\Route;
 class PortfolioController extends AbstractController
 {
     #[Route('/portfolio', name: 'app_portfolio')]
-    public function index
-    (
+    public function index(
         CategoryRepository $categoryRepository,
-    ): Response
-    {
+    ): Response {
         return $this->render('portfolio/portfolio.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
 
     #[Route('/portfolio/{id}', name: 'app_portfolio_category')]
-    public function category(Category $category,PaintRepository $paintRepository): Response
+    public function category(Category $category, PaintRepository $paintRepository): Response
     {
         $paints = $paintRepository->findAllPortfolio($category);
 

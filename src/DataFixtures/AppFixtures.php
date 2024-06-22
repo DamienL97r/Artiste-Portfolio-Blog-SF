@@ -20,7 +20,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
-        
+
         $userPainter = new User();
         $userPainter->setEmail('user@painter.com')
             ->setFirstname($faker->firstName())
@@ -48,16 +48,16 @@ class AppFixtures extends Fixture
 
         $batchCount = 0;
 
-        for ($i = 0; $i < self::NB_CATEGORY; $i++) {
+        for ($i = 0; $i < self::NB_CATEGORY; ++$i) {
             $category = new Category();
             $category->setName($faker->text(20))
                      ->setDescription($faker->realTextBetween(10, 50))
                      ->setSlug($faker->slug);
 
             $manager->persist($category);
-            $batchCount++;
+            ++$batchCount;
 
-            for ($j = 0; $j < self::NB_PAINT; $j++) {
+            for ($j = 0; $j < self::NB_PAINT; ++$j) {
                 $paint = new Paint();
                 $paint->setName($faker->text(20))
                       ->setWidth($faker->randomFloat(2, 0, 15))
@@ -74,16 +74,16 @@ class AppFixtures extends Fixture
                       ->setUser($userPainter);
 
                 $manager->persist($paint);
-                $batchCount++;
+                ++$batchCount;
 
-                if ($batchCount % self::BATCH_SIZE === 0) {
+                if (0 === $batchCount % self::BATCH_SIZE) {
                     $manager->flush();
                     $manager->clear(); // Clear the EntityManager to free memory
                 }
             }
         }
 
-        for ($i = 0; $i < self::NB_BLOGPOST; $i++) {
+        for ($i = 0; $i < self::NB_BLOGPOST; ++$i) {
             $blogPost = new BlogPost();
             $blogPost->setTitle($faker->text(20))
                      ->setContent($faker->realTextBetween(10, 50))
@@ -93,9 +93,9 @@ class AppFixtures extends Fixture
                      ->setUser($userPainter);
 
             $manager->persist($blogPost);
-            $batchCount++;
+            ++$batchCount;
 
-            if ($batchCount % self::BATCH_SIZE === 0) {
+            if (0 === $batchCount % self::BATCH_SIZE) {
                 $manager->flush();
                 $manager->clear(); // Clear the EntityManager to free memory
             }

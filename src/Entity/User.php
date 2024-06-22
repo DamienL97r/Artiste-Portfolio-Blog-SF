@@ -32,7 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    private ?string $password = ''; /*IF test failed use '' instead of null */
+    private ?string $password = ''; /* IF test failed use '' instead of null */
 
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
