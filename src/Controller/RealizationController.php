@@ -18,7 +18,7 @@ class RealizationController extends AbstractController
         PaginatorInterface $paginator,
         Request $request
         ): Response {
-            $data = $paintRepository->findAll();
+            $data = $paintRepository->findBy([], ['id' => 'DESC']);
 
             $paints = $paginator->paginate(
                 $data, 

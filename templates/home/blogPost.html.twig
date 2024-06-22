@@ -10,7 +10,7 @@
 
       {% for article in last_three_blog_post %}
       <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-        <a href="{{ path('app_blogpost_detail', {'id': article.id}) }}"><img src="{{ article.file }}" alt="Image" class="img-fluid rounded mb-4"></a>
+        <a href="{{ path('app_blogpost_detail', {'id': article.id}) }}"><img src="../uploads/images/blogposts/{{ article.file }}" alt="Image" class="img-fluid rounded mb-4"></a>
         <h3 class="h4 mb-3"><a href="{{ path('app_blogpost_detail', {'id': article.id}) }}">{{article.title}}</a></h3>
         <p>{{article.content|u.truncate(150, '...', false)}}</p>
         <p class="blog-post-meta">Publié le {{article.createdAt|date("d-m-Y")}}</p>
