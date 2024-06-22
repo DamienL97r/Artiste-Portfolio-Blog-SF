@@ -33,7 +33,7 @@
             {% for paint in paints %}
               <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                 <a href="{{ path('app_realization_detail', {'id': paint.id}) }}" class="media-1">
-                  <img src="../uploads/images/paints/{{ paint.file }}" alt="Image" class="img-fluid">
+                  <img src="{{ vich_uploader_asset(paint, 'imageFile')}}" alt="Image" class="img-fluid">
                   <div class="media-1-content">
                     <h2>{{paint.name}}</h2>
                     <span class="category">{{paint.description}}</span>
