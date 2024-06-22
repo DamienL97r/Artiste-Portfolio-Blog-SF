@@ -3,7 +3,7 @@
 Un site internet présentant des peintures et un artiste
 
 ## Features
-Visiteur :
+#### Visiteur :
 - Consulter les 3 dernières peintures et les 3 derniers articles (page : Accueil)
 - Consulter les peintures et leurs détails (page : Réalisation + page détail)
 - Consulter les articles et leurs détails (page : Actualités + page détail)
@@ -12,7 +12,7 @@ Visiteur :
 - Consulter page Contact
 - Publier un commentaire sur les articles et sur les peintures
 
-Peintre :
+#### Peintre :
 - Pouvoir se connecter
 - Consulter Back Office
 - CRUD peinture
