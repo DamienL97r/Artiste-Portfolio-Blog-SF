@@ -25,12 +25,12 @@
     <div class="container">
         <div class="row">
             {% for category in categories %}
-                {% set img = category.paints|last %}
+                {% set paint = category.paints|last %}
                 <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="0">
                     <div class="service grayscale">
                         <div class="service-img">
                             <a href="{{ path('app_portfolio_category', {'id': category.id}) }}">
-                                <img src="../uploads/images/paints/{{ img.file }}" alt="Image" class="img-fluid">
+                                <img src="{{ vich_uploader_asset(paint, 'imageFile')}}" alt="Image" class="img-fluid">
                             </a>
                         </div>
                         <div class="service-inner">

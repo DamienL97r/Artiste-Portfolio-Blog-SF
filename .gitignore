@@ -30,4 +30,7 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
-/public/uploads/images/*
+/public/uploads/images/paints/*
+/public/uploads/images/blogposts/*
+!/public/uploads/images/paints/placeholder.jpg
+!/public/uploads/images/blogposts/placeholder.jpg

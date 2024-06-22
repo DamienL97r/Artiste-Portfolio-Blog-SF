@@ -69,7 +69,7 @@ class AppFixtures extends Fixture
                       ->setDescription($faker->realTextBetween(10, 50))
                       ->setPortfolio($faker->boolean(30))
                       ->setSlug($faker->slug)
-                      ->setFile('/images/hero_1.jpg')
+                      ->setFile('placeholder.jpg')
                       ->addCategory($category)
                       ->setUser($userPainter);
 
@@ -88,7 +88,7 @@ class AppFixtures extends Fixture
             $blogPost->setTitle($faker->text(20))
                      ->setContent($faker->realTextBetween(10, 50))
                      ->setSlug($faker->slug)
-                     ->setFile('/images/img_v_3-min.jpg')
+                     ->setFile('placeholder.jpg')
                      ->setCreatedAt($faker->dateTimeBetween('-6 month', 'now'))
                      ->setUser($userPainter);
 

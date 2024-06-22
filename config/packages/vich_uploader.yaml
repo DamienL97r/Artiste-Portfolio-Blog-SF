@@ -1,0 +1,16 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        paint_images:
+            uri_prefix: '%paint_images%'
+            upload_destination: '%kernel.project_dir%/public%paint_images%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: true
+            delete_on_remove: true
+        blogpost_images:
+            uri_prefix: '%blogpost_images%'
+            upload_destination: '%kernel.project_dir%/public%blogpost_images%'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_update: true
+            delete_on_remove: true
