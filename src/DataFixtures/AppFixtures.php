@@ -33,19 +33,6 @@ class AppFixtures extends Fixture
 
         $manager->persist($userPainter);
 
-        $userAdmin = new User();
-        $userAdmin->setEmail('user@admin.com')
-            ->setFirstname($faker->firstName())
-            ->setLastname($faker->lastName())
-            ->setPhoneNumber($faker->phoneNumber())
-            ->setAbout($faker->text(150))
-            ->setInstagramAccount('instagram')
-            ->setRoles(['ROLE_ADMIN'])
-            ->setPassword('$2y$13$.4rPn3ImMuOTa4ia38ULs.QAjWserG9D369rGvJdm893ofKS0bnhO'); // mdp = user
-
-        $manager->persist($userAdmin);
-        $manager->flush(); // Persist and flush userAdmin to avoid multiple persistent states
-
         $batchCount = 0;
 
         for ($i = 0; $i < self::NB_CATEGORY; ++$i) {
