@@ -18,6 +18,7 @@ Un site internet présentant des peintures et un artiste
 - CRUD peinture
 - CRUD article
 - CRUD catégorie
+- Publier la présentation du peintre ( informations sur la page A propos)
 
 
 ## Lancer l'environnement de développement
