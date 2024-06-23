@@ -13,8 +13,8 @@
 
             {% for paint in last_three_paints %}
               <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                <a href="{{ vich_uploader_asset(paint, 'imageFile')}}" class="media-1 glightbox">
-                  <img src="{{ vich_uploader_asset(paint, 'imageFile')}}" alt="Image" class="img-fluid">
+                <a href="{{ vich_uploader_asset(paint, 'imageFile') | imagine_filter('full') }}" class="media-1 glightbox">
+                  <img src="{{ vich_uploader_asset(paint, 'imageFile') | imagine_filter('my_thumb') }}" alt="Image" class="img-fluid">
                   <div class="media-1-content">
                     <h2>{{paint.name}}</h2>
                     <span class="category">{{paint.description}}</span>
