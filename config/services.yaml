@@ -6,6 +6,7 @@
 parameters:
     paint_images: \uploads\images\paints
     blogpost_images: \uploads\images\blogposts
+    profile_picture: \uploads\images\profilePicture
 
 services:
     # default configuration for services in *this* file
