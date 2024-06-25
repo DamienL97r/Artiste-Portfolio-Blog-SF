@@ -7,10 +7,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -27,6 +27,12 @@ class UserCrudController extends AbstractCrudController
             TextField::new('lastname'),
             TextField::new('phoneNumber'),
             TextareaField::new('about'),
+            TextField::new('imageFile')
+                ->setFormType(VichFileType::class)
+                ->hideOnIndex(),
+            ImageField::new('profilePicture')
+                ->setBasePath('/uploads/images/profilePicture')
+                ->onlyOnIndex(),
         ];
     }
 
