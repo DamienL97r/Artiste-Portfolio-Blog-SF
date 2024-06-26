@@ -41,8 +41,7 @@ class RealizationController extends AbstractController
         Request $request,
         CommentService $commentService,
         CommentRepository $commentRepository
-    ): Response
-    {
+    ): Response {
         $comment = new Comment();
         $comments = $commentRepository->findComments($paint);
 
@@ -60,6 +59,7 @@ class RealizationController extends AbstractController
 
             return $this->redirectToRoute('app_realization_detail', ['id' => $paint->getId()]);
         }
+
         return $this->render('realization/detail.html.twig', [
             'paint' => $paint,
             'form' => $form->createView(),

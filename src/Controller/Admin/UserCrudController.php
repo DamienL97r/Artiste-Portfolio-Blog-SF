@@ -45,7 +45,7 @@ class UserCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        return $crud   
+        return $crud
             ->setPageTitle('index', 'Paramètres')
             ->setPageTitle('edit', 'Editer les paramètres');
     }

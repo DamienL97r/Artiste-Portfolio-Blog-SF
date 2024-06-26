@@ -42,9 +42,10 @@ class CommentCrudController extends AbstractCrudController
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
             ->disable(Action::DELETE, Action::NEW);
     }
+
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setDefaultSort((['createdAt' => 'DESC']));
+            ->setDefaultSort(['createdAt' => 'DESC']);
     }
 }

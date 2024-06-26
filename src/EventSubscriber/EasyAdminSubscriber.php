@@ -3,7 +3,6 @@
 namespace App\EventSubscriber;
 
 use App\Entity\BlogPost;
-use App\Entity\Comment;
 use App\Entity\Paint;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Bundle\SecurityBundle\Security;

@@ -8,7 +8,6 @@ use App\Form\CommentType;
 use App\Repository\BlogPostRepository;
 use App\Repository\CommentRepository;
 use App\Services\CommentService;
-use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,8 +41,7 @@ class BlogpostController extends AbstractController
         Request $request,
         CommentService $commentService,
         CommentRepository $commentRepository
-    ): Response
-    {
+    ): Response {
         $comment = new Comment();
         $comments = $commentRepository->findComments($article);
 

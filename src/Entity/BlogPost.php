@@ -54,7 +54,7 @@ class BlogPost
 
     public function __toString()
     {
-        return$this->title;
+        return $this->title;
     }
 
     public function getId(): ?int
