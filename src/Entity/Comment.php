@@ -32,6 +32,9 @@ class Comment
     #[ORM\ManyToOne(inversedBy: 'comments')]
     private ?BlogPost $blogPost = null;
 
+    #[ORM\Column]
+    private ?bool $isPublished = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Comment
     public function setBlogPost(?BlogPost $blogPost): static
     {
         $this->blogPost = $blogPost;
+
+        return $this;
+    }
+
+    public function isPublished(): ?bool
+    {
+        return $this->isPublished;
+    }
+
+    public function setIsPublished(bool $isPublished): static
+    {
+        $this->isPublished = $isPublished;
 
         return $this;
     }

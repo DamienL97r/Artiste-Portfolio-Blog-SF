@@ -83,33 +83,6 @@ import GLightbox from 'glightbox';
     };
     countdown();
 
-    // Tiny slider initialization
-    const tinyslier = function() {
-        const elements = document.querySelectorAll('#testimonial');
-        if (elements.length > 0) {
-            const slider = tns({
-                container: "#testimonial",
-                items: 1,
-                axis: "horizontal",
-                swipeAngle: false,
-                speed: 400,
-                nav: true,
-                controls: false,
-                controlsPosition: "bottom",
-                autoplay: true,
-                autoplayHoverPause: true,
-                autoplayTimeout: 3500,
-                autoplayButtonOutput: false,
-                responsive: {
-                    "350": { items: 1 },
-                    "500": { items: 1, gutter: 30 },
-                    "768": { items: 2, gutter: 30 }
-                }
-            });
-        }
-    };
-    tinyslier();
-
     // Lightbox initialization
     const lightbox = function() {
         const lightboxVideo = GLightbox({

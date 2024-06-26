@@ -2,37 +2,37 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Entity\Comment;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
-class UserCrudController extends AbstractCrudController
+class CommentCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Comment::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('email'),
-            TextField::new('firstname'),
-            TextField::new('lastname'),
-            TextField::new('phoneNumber'),
-            TextareaField::new('about'),
-            TextField::new('imageFile')
-                ->setFormType(VichFileType::class)
-                ->hideOnIndex(),
-            ImageField::new('profilePicture')
-                ->setBasePath('/uploads/images/profilePicture')
-                ->onlyOnIndex(),
+            AssociationField::new('blogPost'),
+            AssociationField::new('paint'),
+            TextField::new('author')
+                ->hideOnForm(),
+            EmailField::new('email')
+                ->hideOnForm(),
+            DateTimeField::new('createdAt'),
+            TextareaField::new('content'),
+            BooleanField::new('isPublished'),
         ];
     }
 
@@ -46,7 +46,6 @@ class UserCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('index', 'Paramètres')
-            ->setPageTitle('edit', 'Editer les paramètres');
+            ->setDefaultSort(['createdAt' => 'DESC']);
     }
 }

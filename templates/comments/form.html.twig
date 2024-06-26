@@ -1,0 +1,24 @@
+{{ form_start(form, {'attr': {'class': 'form-contact'}}) }}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+                {{ form_row(form.author, {'attr': {'class': 'form-control', 'placeholder': 'ex: John Doe'}}) }}
+            </div>	
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+                {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'ex: johndoe@exemple.com'}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="form-group">
+            {{ form_row(form.content, {'attr': {'class': 'form-control', 'placeholder': 'Votre message'}}) }}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="form-group">
+            {{ form_widget(form.envoyer, { 'attr': {'class': 'btn btn-black btn-block'} }) }}
+        </div>
+    </div>
+{{ form_end(form) }}
