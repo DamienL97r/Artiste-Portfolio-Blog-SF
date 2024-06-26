@@ -1,0 +1,44 @@
+{% if comments %}
+    <div class="section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-6" data-aos="fade-up">
+                <span class="subheading mb-2 d-inline-block">Tous les commentaires</span>
+                <h2>Commentaires</h2>
+            </div>
+        </div>
+
+        <div class="testimonial-wrap" data-aos="fade-up"  data-aos-delay="100">
+            {% for com in comments %}
+                <div class="item">
+                    <div class="testmonial">
+                        <span class="quote">&rdquo;</span>
+                        <blockquote>
+                            <p>{{ com.content }}</p>
+                        </blockquote>
+                        <div class="d-flex author align-items-center">
+                            <div class="author-name">
+                                <h2>{{ com.author }}</h2>
+                                <span>Publié le {{ com.createdAt|date('d/m/Y') }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    </div>
+{% else %}
+<div class="section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-6" data-aos="fade-up">
+                <span class="subheading mb-2 d-inline-block">
+                    Il n'y a aucun commentaires pour le moment.
+                </span>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endif %}

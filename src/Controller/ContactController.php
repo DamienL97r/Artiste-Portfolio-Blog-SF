@@ -17,7 +17,7 @@ class ContactController extends AbstractController
     {
     }
 
-    #[Route('/contact', name: 'app_contact', methods: ['GET', 'POST'])]
+    #[Route('/contact', name: 'app_contact')]
     public function contact(Request $request, EntityManagerInterface $entityManager): Response
     {
         $contact = new Contact();
@@ -45,8 +45,6 @@ class ContactController extends AbstractController
                 'success',
                 'Votre message a été envoyé avec succès !'
             );
-
-            // return $this->redirectToRoute('app_contact', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('contact/contact.html.twig', [

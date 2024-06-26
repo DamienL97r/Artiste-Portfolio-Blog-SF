@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Paint;
+use App\Form\CommentType;
+use App\Repository\CommentRepository;
 use App\Repository\PaintRepository;
+use App\Services\CommentService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,10 +36,34 @@ class RealizationController extends AbstractController
     }
 
     #[Route('/realization/{id}', name: 'app_realization_detail')]
-    public function realizationDetail(Paint $paint): Response
+    public function realizationDetail(
+        Paint $paint,
+        Request $request,
+        CommentService $commentService,
+        CommentRepository $commentRepository
+    ): Response
     {
+        $comment = new Comment();
+        $comments = $commentRepository->findComments($paint);
+
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment = $form->getData();
+            $commentService->persistComment($comment, null, $paint);
+
+            $this->addFlash(
+                'success',
+                'Votre commentaire a été envoyé avec succès ! Votre commentaire est en attente de modération pour le moment.'
+            );
+
+            return $this->redirectToRoute('app_realization_detail', ['id' => $paint->getId()]);
+        }
         return $this->render('realization/detail.html.twig', [
             'paint' => $paint,
+            'form' => $form->createView(),
+            'comments' => $comments,
         ]);
     }
 }

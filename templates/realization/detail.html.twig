@@ -60,5 +60,20 @@
     </div>
 </div>
 
+<div class="section section-contact m-md-5 px-md-5">
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert-success">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+        <h2>Laisser un commentaire</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, exercitationem!</p>
+
+        {% include "comments/form.html.twig" %}
+    </div>	
+</div>
+
+{% include "comments/comments.html.twig" %}
 
 {% endblock %}
